@@ -1,0 +1,20 @@
+$TTL    604800
+@       IN      SOA     douglas.aluno.ic.ufmt.br. douglas.aluno.ic.ufmt.br. (
+
+                 201811316000 ; Serial
+                   604800     ; Refresh
+                   86400      ; Retry
+                   2419200    ; Expire
+                   604800 )   ; Negative Cache TTL
+;
+
+; Name servers
+@       IN      NS      douglas.aluno.ic.ufmt.br.
+
+; Define o endereço IP para www e ftp
+www     IN      A       192.168.4.1
+ftp     IN      A       192.168.4.1
+
+; Registros adicionais
+ns      IN      A	    192.168.4.1
+

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  servidor-dhcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: servidor-dhcp
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
