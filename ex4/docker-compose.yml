@@ -7,13 +7,16 @@ services:
       - "21:21"
       - "21100-21110:21100-21110"
     volumes:
-      - ./ftp_data:/home/vsftpd
+      - ./data/:/home/vsftpd
     environment:
-      - FTP_USER=aluno
+      - FTP_USER=strappasson
       - FTP_PASS=123456
-      - PASV_ADDRESS=192.168.18.218
       - PASV_MIN_PORT=21100
       - PASV_MAX_PORT=21110
+      - LOCAL_UMASK=777
+    networks:
+      - ftp-network
+  
 
   nginx-server:
     image: nginx:latest
@@ -21,7 +24,13 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./ftp_data:/usr/share/nginx/html
+      - ./data/strappasson:/usr/share/nginx/html
     depends_on:
       - ftp-server
     restart: always
+    networks:
+      - ftp-network  
+
+networks:
+  ftp-network:
+    driver: bridge
